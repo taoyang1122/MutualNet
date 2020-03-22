@@ -6,12 +6,12 @@ The code is based on the implementation of [Slimmable Networks](https://github.c
 - PyTorch 1.0.1, torchvision 0.2.2, Numpy, pyyaml 5.1.
 - Follow the PyTorch [example](https://github.com/pytorch/examples/tree/master/imagenet) to prepare ImageNet dataset.
 # Run
-- **Training**
+## Training
 ```
 python train_mutualnet.py app:apps/mobilenet_v1.yml
 ```
 Training hyperparameters are in the .yml files.
-- **Testing**
+## Testing
 
 Modify '*test_only: False*' to '*test_only: True*' in .yml file to enable testing.
 
