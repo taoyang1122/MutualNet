@@ -23,5 +23,8 @@ python train_mutualnet.py app:apps/mobilenet_v1.yml
 ## Performance over the whole FLOPs specturm
 ![Results compared with US-Net](imgs/result1.JPG)
 ## Scale up model compared woth EfficienNet
-![Results compared with EfficienNet](imgs/result2.JPG)
+
+|Model|Best Model Scaling|FLOPs|Top-1 Acc|
+EfficienNet|*d=1.4, w=1.2, r=1.3*|2.3B|75.6%|
+MutualNet|*w=1.6, r=1.3*|2.3B|**77.1|
 ## Boost performance of a single network
