@@ -1,0 +1,42 @@
+# data
+dataset: imagenet1k
+data_transforms: imagenet1k_basic
+data_loader: imagenet1k_basic
+dataset_dir: /data/ImageNet/ILSVRC/Data/CLS-LOC
+data_loader_workers: 4
+
+# info
+num_classes: 1000
+image_resize: 256
+image_size: 224
+num_epochs: 120
+print_freq: 100
+
+# optimizer
+optimizer: sgd
+momentum: 0.9
+weight_decay: 0.0001
+nesterov: True
+
+# lr
+lr: 0.2
+lr_scheduler: cosine
+
+# model profiling
+profiling: [gpu]
+
+#
+random_seed: 1995
+batch_size: 512
+
+log_dir: logs/
+model: models.us_resnet
+depth: 50
+reset_parameters: True
+width_mult_list: [0.9, 1.0] #, 0.95, 0.9, 0.85, 0.8, 0.75, 0.7, 0.65, 0.6, 0.55, 0.45, 0.4, 0.35, 0.3
+width_mult_range: [0.9, 1.0]
+resolution_list: [224, 192, 160, 128]
+# test pretrained resume
+test_only: False
+pretrained: ''
+resume: ''
