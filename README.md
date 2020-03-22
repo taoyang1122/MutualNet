@@ -21,7 +21,7 @@ python train_mutualnet.py app:apps/mobilenet_v1.yml
 ```
 # Results
 ## Performance over the whole FLOPs specturm
-
+![Results compared with US-Net](imgs/result1.JPG)
 ## Scale up model compared woth EfficienNet
-
+![Results compared with EfficienNet](imgs/result2.JPG)
 ## Boost performance of a single network
