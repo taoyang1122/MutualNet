@@ -20,4 +20,8 @@ Modify '*pretrained: /PATH/TO/YOUR/WEIGHTS*' to assign trained weights.
 python train_mutualnet.py app:apps/mobilenet_v1.yml
 ```
 # Results
-TODO
+## Performance over the whole FLOPs specturm
+
+## Scale up model compared woth EfficienNet
+
+## Boost performance of a single network
