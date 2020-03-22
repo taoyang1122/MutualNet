@@ -28,7 +28,7 @@ profiling: [gpu]
 
 #
 random_seed: 1995
-batch_size: 256
+batch_size: 1024
 
 log_dir: logs/
 model: models.us_mobilenet_v2
