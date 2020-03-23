@@ -23,7 +23,7 @@ python train_mutualnet.py app:apps/mobilenet_v1.yml
 ```
 # Results
 ## Performance over the whole FLOPs specturm
-Comparison with US-Net \[1\] under different backbones.
+Comparison with US-Net \[1\] under different backbones on ImageNet.
 
 ![Results compared with US-Net](imgs/result1.JPG)
 ## Scaling up model compared with EfficienNet
