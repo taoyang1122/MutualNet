@@ -26,7 +26,7 @@ Comparison with US-Net \[1\] under different backbones.
 ![Results compared with US-Net](imgs/result1.JPG)
 ## Scaling up model compared with EfficienNet
 The best model scaling on MobileNet v1 compared with EfficientNet \[2\]
-|Model|Best Model Scaling|FLOPs|Top-1 Acc|
+|MobileNet v1|Best Model Scaling|FLOPs|Top-1 Acc|
 |-----|------------------|-----|---------|
 EfficienNet \[2\]|*d=1.4, w=1.2, r=1.3*|2.3B|75.6%|
 MutualNet|*w=1.6, r=1.3*|2.3B|**77.1%**|
