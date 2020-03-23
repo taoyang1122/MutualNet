@@ -1,4 +1,4 @@
-# [MutualNet: Adaptive ConvNet via Mutual Learning from Network Width and Resolution](https://arxiv.org/abs/1909.12978)
+# MutualNet: Adaptive ConvNet via Mutual Learning from Network Width and Resolution [[Arxiv]](https://arxiv.org/abs/1909.12978)
 This work proposes a method to train a network that is executable at dynamic resource constraints. The proposed mutual learning scheme significantly improves the accuracy-efficiency tradeoffs over [Slimmable Networks](https://github.com/JiahuiYu/slimmable_networks). The method is also promising to serve as a plug-and-play strategy to boost a single network.
 
 # Install
