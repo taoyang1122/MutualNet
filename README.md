@@ -20,17 +20,18 @@ Modify `width_mult_list` to test more network widths.
 ```
 python train_mutualnet.py app:apps/mobilenet_v1.yml
 ```
-# Results
+# Results and model weights
 ## Performance over the whole FLOPs specturm
 Comparison with [US-Net](http://openaccess.thecvf.com/content_ICCV_2019/html/Yu_Universally_Slimmable_Networks_and_Improved_Training_Techniques_ICCV_2019_paper.html) under different backbones on ImageNet.
 
+Model weights: [[MobileNet v1]](https://drive.google.com/open?id=1A36ZJCrkKXQX8T0vZR9kRN5P1fjIDMu2), [[MobileNet v2]](https://drive.google.com/open?id=1GIe5Mpbkc2CptvPbqcEgJtPSoP2WYkNm)
 ![Results compared with US-Net](imgs/result1.JPG)
 ## Scaling up model compared with EfficienNet
 The best model scaling on MobileNet v1 compared with [EfficientNet](http://proceedings.mlr.press/v97/tan19a.html)
 |Model|Best Model Scaling|FLOPs|Top-1 Acc|
 |-----|------------------|-----|---------|
 [EfficientNet](http://proceedings.mlr.press/v97/tan19a.html)|*d=1.4, w=1.2, r=1.3*|2.3B|75.6%|
-MutualNet|*w=1.6, r=1.3*|2.3B|**77.1%**|
+MutualNet ([Model](https://drive.google.com/open?id=1NdygihO3AxEp7f9XyhofoYz_64ki_Sma))|*w=1.6, r=1.3*|2.3B|**77.1%**|
 ## Boosting performance of a single network
 Top-1 accuracy on Cifar-10 and Cifar-100
 |WideResNet-28-10|GPU search hours|Cifar-10|Cifar-100|
@@ -50,6 +51,6 @@ Compared with popular performance boosting methods on ImageNet
 |[SENet](http://openaccess.thecvf.com/content_cvpr_2018/html/Hu_Squeeze-and-Excitation_Networks_CVPR_2018_paper.html)|SE Block|77.6%|
 |[AutoAugment](http://openaccess.thecvf.com/content_CVPR_2019/html/Cubuk_AutoAugment_Learning_Augmentation_Strategies_From_Data_CVPR_2019_paper.html)|15000 GPU search hours|77.6%|
 |[Fast AutoAugment](http://papers.nips.cc/paper/8892-fast-autoaugment)|450 GPU search hours|77.6%|
-|MutualNet| \ |**78.6%**|
+|MutualNet ([Model](https://drive.google.com/open?id=1Br3o58lZqyGzZaqZpqhAfUJhMawFS_Pc))| \ |**78.6%**|
 # Reference
 \- The code is based on the implementation of [Slimmable Networks](https://github.com/JiahuiYu/slimmable_networks).
