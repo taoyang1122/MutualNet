@@ -21,10 +21,18 @@ python train_mutualnet.py app:apps/mobilenet_v1.yml
 ```
 # Results
 ## Performance over the whole FLOPs specturm
-![Results compared with US-Net](imgs/result1.JPG)
-## Scale up model compared woth EfficienNet
+Comparison with US-Net \[1\] under different backbones.
 
+![Results compared with US-Net](imgs/result1.JPG)
+## Scaling up model compared woth EfficienNet
+The best model scaling on MobileNet v1 compared with EfficientNet \[2\]
 |Model|Best Model Scaling|FLOPs|Top-1 Acc|
-EfficienNet|*d=1.4, w=1.2, r=1.3*|2.3B|75.6%|
+|-----|------------------|-----|---------|
+EfficienNet \[[2]\]|*d=1.4, w=1.2, r=1.3*|2.3B|75.6%|
 MutualNet|*w=1.6, r=1.3*|2.3B|**77.1|
 ## Boost performance of a single network
+
+# Reference
+\[1\] Yu, Jiahui, and Thomas S. Huang. "Universally slimmable networks and improved training techniques." Proceedings of the IEEE International Conference on Computer Vision. 2019.
+
+\[2\] Tan, Mingxing, and Quoc Le. "EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks." International Conference on Machine Learning. 2019.
