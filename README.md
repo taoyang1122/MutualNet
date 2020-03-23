@@ -10,12 +10,14 @@ The code is based on the implementation of [Slimmable Networks](https://github.c
 ```
 python train_mutualnet.py app:apps/mobilenet_v1.yml
 ```
-Training hyperparameters are in the .yml files.
+Training hyperparameters are in the .yml files. `width_mult_list` is just used to print training logs for corresponding network widths. During testing, you can assign any desired width between the width lower bound and upper bound.
 ## Testing
 
-Modify '*test_only: False*' to '*test_only: True*' in .yml file to enable testing.
+Modify `test_only: False` to `test_only: True` in .yml file to enable testing. 
 
-Modify '*pretrained: /PATH/TO/YOUR/WEIGHTS*' to assign trained weights.
+Modify `pretrained: /PATH/TO/YOUR/WEIGHTS` to assign trained weights.
+
+Modify `width_mult_list` to test more network widths.
 ```
 python train_mutualnet.py app:apps/mobilenet_v1.yml
 ```
