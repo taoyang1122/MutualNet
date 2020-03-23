@@ -24,7 +24,7 @@ python train_mutualnet.py app:apps/mobilenet_v1.yml
 Comparison with US-Net \[1\] under different backbones.
 
 ![Results compared with US-Net](imgs/result1.JPG)
-## Scaling up model compared woth EfficienNet
+## Scaling up model compared with EfficienNet
 The best model scaling on MobileNet v1 compared with EfficientNet \[2\]
 |Model|Best Model Scaling|FLOPs|Top-1 Acc|
 |-----|------------------|-----|---------|
