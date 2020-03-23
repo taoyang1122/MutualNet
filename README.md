@@ -36,8 +36,8 @@ Top-1 accuracy on Cifar-10 and Cifar-100
 |WideResNet-28-10|GPU search hours|Cifar-10|Cifar-100|
 |----------------|:--------------:|:------:|:-------:|
 |[Baseline](https://arxiv.org/abs/1605.07146)|0|96.1%|81.2%|
-|[Cutout](https://arxiv.org/abs/1708.04552)|0|96.9%|81.6|
-|[AutoAugment](http://openaccess.thecvf.com/content_CVPR_2019/html/Cubuk_AutoAugment_Learning_Augmentation_Strategies_From_Data_CVPR_2019_paper.html)|5000|**97.4%**|82.9|
+|[Cutout](https://arxiv.org/abs/1708.04552)|0|96.9%|81.6%|
+|[AutoAugment](http://openaccess.thecvf.com/content_CVPR_2019/html/Cubuk_AutoAugment_Learning_Augmentation_Strategies_From_Data_CVPR_2019_paper.html)|5000|**97.4%**|82.9%|
 |[Fast AutoAugment](http://papers.nips.cc/paper/8892-fast-autoaugment)|3.5|97.3%|82.7%|
 |MutualNet|0|97.2%|**83.8%**|
 
