@@ -101,7 +101,7 @@ class USLinear(nn.Linear):
                 self.out_features_basic * self.width_mult)
         weight = self.weight[:out_features, :in_features]
         if self.bias is not None:
-            bias = self.bias[:self.out_features]
+            bias = self.bias[:out_features]
         else:
             bias = self.bias
         return nn.functional.linear(input, weight, bias)
@@ -126,7 +126,6 @@ class USBatchNorm2d(nn.BatchNorm2d):
         self.ratio = ratio
         self.width_mult = None
         self.ignore_model_profiling = True
-        self.num_features = num_features
 
     def forward(self, input):
         weight = self.weight
