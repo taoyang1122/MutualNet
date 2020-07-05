@@ -1,9 +1,7 @@
 # data
 dataset: imagenet1k
 data_transforms: imagenet1k_mobile
-data_loader: imagenet1k_basic
 dataset_dir: /home/ubuntu/yang/data/ImageNet/ILSVRC/Data/CLS-LOC
-# dataset_dir: /data/ImageNet/ILSVRC/Data/CLS-LOC/
 data_loader_workers: 4
 
 # info
