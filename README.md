@@ -6,10 +6,11 @@ This work proposes a method to train a network that is executable at dynamic res
 - Follow the PyTorch [example](https://github.com/pytorch/examples/tree/master/imagenet) to prepare ImageNet dataset.
 # Run
 ## Training
+To train MobileNet v1, run the codes below
 ```
-python train_mutualnet.py app:apps/mobilenet_v1.yml
+python train.py app:apps/mobilenet_v1.yml
 ```
-Training hyperparameters are in the .yml files. `width_mult_list` is just used to print training logs for corresponding network widths. During testing, you can assign any desired width between the width lower bound and upper bound.
+Training hyperparameters are in the .yml files. `width_mult_list` is just used to print training logs for corresponding network widths. During testing, you can assign any desired width between the width lower bound and upper bound. To train other models, just use the corresponding .yml files.
 ## Testing
 
 Modify `test_only: False` to `test_only: True` in .yml file to enable testing. 
@@ -18,7 +19,7 @@ Modify `pretrained: /PATH/TO/YOUR/WEIGHTS` to assign trained weights.
 
 Modify `width_mult_list` to test more network widths.
 ```
-python train_mutualnet.py app:apps/mobilenet_v1.yml
+python train.py app:apps/mobilenet_v1.yml
 ```
 # Results and model weights
 ## Performance over the whole FLOPs specturm
