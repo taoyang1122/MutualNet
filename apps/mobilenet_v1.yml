@@ -30,9 +30,9 @@ random_seed: 1995
 batch_size: 1024
 
 log_dir: logs/
-model: models.us_mobilenet_v1
+model: models.mobilenet_v1
 reset_parameters: True
-width_mult_list: [0.25, 0.5, 1.0] #, 0.95, 0.9, 0.85, 0.8, 0.75, 0.7, 0.65, 0.6, 0.55, 0.45, 0.4, 0.35, 0.3
+width_mult_list: [0.25, 1.0] #, 0.95, 0.9, 0.85, 0.8, 0.75, 0.7, 0.65, 0.6, 0.55, 0.45, 0.4, 0.35, 0.3
 width_mult_range: [0.25, 1.0]
 resolution_list: [224, 192, 160, 128]
 # test pretrained resume

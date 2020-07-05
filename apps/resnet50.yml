@@ -2,7 +2,7 @@
 dataset: imagenet1k
 data_transforms: imagenet1k_basic
 data_loader: imagenet1k_basic
-dataset_dir: /data/ImageNet/ILSVRC/Data/CLS-LOC
+dataset_dir: /home/ubuntu/yang/data/ImageNet/ILSVRC/Data/CLS-LOC
 data_loader_workers: 4
 
 # info
@@ -30,7 +30,7 @@ random_seed: 1995
 batch_size: 512
 
 log_dir: logs/
-model: models.us_resnet
+model: models.resnet
 depth: 50
 reset_parameters: True
 width_mult_list: [0.9, 1.0]
