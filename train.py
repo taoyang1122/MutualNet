@@ -5,13 +5,11 @@ import random
 
 import torch
 import torch.nn.functional as F
-from torchvision import datasets, transforms
 import numpy as np
 import ComputePostBN
 from utils.setlogger import get_logger
 
 from utils.model_profiling import model_profiling
-from utils.transforms import Lighting, InputList
 from utils.config import FLAGS
 from utils.datasets import get_dataset
 
@@ -158,7 +156,6 @@ def train_val_test():
     # model
     model = get_model()
     model_wrapper = torch.nn.DataParallel(model).cuda()
-    # criterion = torch.nn.CrossEntropyLoss(reduction='none').cuda()
     criterion = torch.nn.CrossEntropyLoss().cuda()
 
     # check pretrained

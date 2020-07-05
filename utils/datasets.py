@@ -35,10 +35,8 @@ def get_imagenet():
         transforms.ToTensor(),
         transforms.Normalize(mean=mean, std=std),
     ])
-    test_transforms = val_transforms
     train_set = datasets.ImageFolder(os.path.join(FLAGS.dataset_dir, 'train'), transform=train_transforms)
     val_set = datasets.ImageFolder(os.path.join(FLAGS.dataset_dir, 'val'), transform=val_transforms)
-    postset = datasets.ImageFolder(os.path.join(FLAGS.dataset_dir, 'train'), transform=train_transforms)
     train_loader = torch.utils.data.DataLoader(
         train_set, batch_size=FLAGS.batch_size, shuffle=True,
         pin_memory=True, num_workers=FLAGS.data_loader_workers,
@@ -47,12 +45,8 @@ def get_imagenet():
         val_set, batch_size=FLAGS.batch_size, shuffle=False,
         pin_memory=True, num_workers=FLAGS.data_loader_workers,
         drop_last=getattr(FLAGS, 'drop_last', False))
-    # postloader = torch.utils.data.DataLoader(
-    #     postset, batch_size=FLAGS.batch_size, shuffle=True,
-    #     pin_memory=True, num_workers=FLAGS.data_loader_workers,
-    #     drop_last=getattr(FLAGS, 'drop_last', False))
-    # test_loader = val_loader
-    return train_loader, val_loader #, test_loader, postloader
+
+    return train_loader, val_loader
 
 def get_cifar():
     normalize = transforms.Normalize(mean=[x / 255.0 for x in [125.3, 123.0, 113.9]],
