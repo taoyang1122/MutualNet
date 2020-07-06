@@ -43,11 +43,13 @@ Top-1 accuracy on Cifar-10 and Cifar-100
 |[Fast AutoAugment](http://papers.nips.cc/paper/8892-fast-autoaugment)|3.5|97.3%|82.7%|
 |MutualNet|0|97.2%|**83.8%**|
 
-Compared with popular performance boosting methods on ImageNet
+Compared with state-of-the-art performance boosting methods on ImageNet
 |ResNet-50|Additional Cost|Top-1 Acc|
 |---------|:-------------:|:-------:|
 |[Baseline](http://openaccess.thecvf.com/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html)| \ |76.5%|
 |[Cutout](https://arxiv.org/abs/1708.04552)| \ |77.1%|
+|[Mixup](https://arxiv.org/abs/1710.09412)| \ |77.9%|
+|[CutMix](https://arxiv.org/abs/1905.04899)| \ |**78.6%**|
 |[KD](https://openreview.net/forum?id=B1ae1lZRb)|Teacher Network|76.5%|
 |[SENet](http://openaccess.thecvf.com/content_cvpr_2018/html/Hu_Squeeze-and-Excitation_Networks_CVPR_2018_paper.html)|SE Block|77.6%|
 |[AutoAugment](http://openaccess.thecvf.com/content_CVPR_2019/html/Cubuk_AutoAugment_Learning_Augmentation_Strategies_From_Data_CVPR_2019_paper.html)|15000 GPU search hours|77.6%|
