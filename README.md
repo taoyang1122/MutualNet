@@ -42,7 +42,7 @@ Top-1 accuracy on Cifar-10 and Cifar-100
 |[Mixup](https://arxiv.org/abs/1710.09412)|0|97.3%|82.5%|
 |[AutoAugment](http://openaccess.thecvf.com/content_CVPR_2019/html/Cubuk_AutoAugment_Learning_Augmentation_Strategies_From_Data_CVPR_2019_paper.html)|5000|**97.4%**|82.9%|
 |[Fast AutoAugment](http://papers.nips.cc/paper/8892-fast-autoaugment)|3.5|97.3%|82.7%|
-|MutualNet|0|97.2%|**83.8%**|
+|MutualNet|0|97.3%|**83.8%**|
 
 Compared with state-of-the-art performance boosting methods on ImageNet
 |ResNet-50|Additional Cost|Top-1 Acc|
