@@ -2,7 +2,7 @@ import torch.nn as nn
 from utils.config import FLAGS
 width_mult = FLAGS.width_mult_range[-1]
 
-def make_divisible(v, divisor=8, min_value=1):
+def make_divisible(v, divisor=1, min_value=1):
     """
     forked from slim:
     https://github.com/tensorflow/models/blob/\

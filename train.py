@@ -14,10 +14,10 @@ from utils.config import FLAGS
 from utils.datasets import get_dataset
 
 # set log files
-saved_path = os.path.join("logs", '{}'.format(FLAGS.model[7:]))
+saved_path = os.path.join("logs", '{}-{}'.format(FLAGS.dataset, FLAGS.model[7:]))
 if not os.path.exists(saved_path):
     os.makedirs(saved_path)
-logger = get_logger(os.path.join(saved_path, '{}.log'.format('test' if FLAGS.test_only else 'train')))
+logger = get_logger(os.path.join(saved_path, '{}_div1optimizer.log'.format('test' if FLAGS.test_only else 'train')))
 
 def set_random_seed():
     """set random seed"""
@@ -41,20 +41,25 @@ def get_optimizer(model):
     """get optimizer"""
     # all depthwise convolution (N, 1, x, x) has no weight decay
     # weight decay only on normal conv and fc
-    model_params = []
-    for params in model.parameters():
-        ps = list(params.size())
-        if len(ps) == 4 and ps[1] != 1:  # normal conv
-            weight_decay = FLAGS.weight_decay
-        elif len(ps) == 2:  # fc
-            weight_decay = FLAGS.weight_decay
-        else:
-            weight_decay = 0
-        item = {'params': params, 'weight_decay': weight_decay,
-                'lr': FLAGS.lr, 'momentum': FLAGS.momentum,
-                'nesterov': FLAGS.nesterov}
-        model_params.append(item)
-    optimizer = torch.optim.SGD(model_params)
+    if FLAGS.dataset == 'imagenet1k':
+        model_params = []
+        for params in model.parameters():
+            ps = list(params.size())
+            if len(ps) == 4 and ps[1] != 1:  # normal conv
+                weight_decay = FLAGS.weight_decay
+            elif len(ps) == 2:  # fc
+                weight_decay = FLAGS.weight_decay
+            else:
+                weight_decay = 0
+            item = {'params': params, 'weight_decay': weight_decay,
+                    'lr': FLAGS.lr, 'momentum': FLAGS.momentum,
+                    'nesterov': FLAGS.nesterov}
+            model_params.append(item)
+        optimizer = torch.optim.SGD(model_params)
+    else:
+        optimizer = torch.optim.SGD(model.parameters(), FLAGS.lr,
+                                    momentum=FLAGS.momentum, nesterov=FLAGS.nesterov,
+                                    weight_decay=FLAGS.weight_decay)
     return optimizer
 
 def profiling(model, use_cuda):
@@ -69,7 +74,7 @@ def profiling(model, use_cuda):
             model, FLAGS.image_size, FLAGS.image_size,
             verbose=getattr(FLAGS, 'model_profiling_verbose', verbose))
 
-def train(epoch, loader, model, criterion, optimizer):
+def train(epoch, loader, model, criterion, optimizer, lr_scheduler):
     t_start = time.time()
     model.train()
     for batch_idx, (input_list, target) in enumerate(loader):
@@ -94,6 +99,7 @@ def train(epoch, loader, model, criterion, optimizer):
             loss = torch.nn.KLDivLoss(reduction='batchmean')(F.log_softmax(output, dim=1), F.softmax(max_output_detach, dim=1))
             loss.backward()
         optimizer.step()
+        lr_scheduler.step()
         # print training log
         if batch_idx % FLAGS.print_freq == 0 or batch_idx == len(loader)-1:
             with torch.no_grad():
@@ -157,6 +163,7 @@ def train_val_test():
     model = get_model()
     model_wrapper = torch.nn.DataParallel(model).cuda()
     criterion = torch.nn.CrossEntropyLoss().cuda()
+    train_loader, val_loader = get_dataset()
 
     # check pretrained
     if FLAGS.pretrained:
@@ -166,8 +173,10 @@ def train_val_test():
             checkpoint = checkpoint['model']
         new_keys = list(model_wrapper.state_dict().keys())
         old_keys = list(checkpoint.keys())
-        new_keys = [key for key in new_keys if 'bn' not in key]
-        old_keys = [key for key in old_keys if 'bn' not in key]
+        new_keys = [key for key in new_keys if 'running' not in key]
+        new_keys = [key for key in new_keys if 'tracked' not in key]
+        old_keys = [key for key in old_keys if 'running' not in key]
+        old_keys = [key for key in old_keys if 'tracked' not in key]
         if not FLAGS.test_only:
             old_keys = old_keys[:-2]
             new_keys = new_keys[:-2]
@@ -184,12 +193,12 @@ def train_val_test():
         model_wrapper.load_state_dict(checkpoint['model'])
         optimizer.load_state_dict(checkpoint['optimizer'])
         last_epoch = checkpoint['last_epoch']
-        lr_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, FLAGS.num_epochs)
+        lr_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, len(train_loader)*FLAGS.num_epochs)
         lr_scheduler.last_epoch = last_epoch
         print('Loaded checkpoint {} at epoch {}.'.format(
             FLAGS.resume, last_epoch))
     else:
-        lr_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, FLAGS.num_epochs)
+        lr_scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, len(train_loader)*FLAGS.num_epochs)
         last_epoch = lr_scheduler.last_epoch
         # print model and do profiling
         print(model_wrapper)
@@ -199,8 +208,6 @@ def train_val_test():
             if 'cpu' in FLAGS.profiling:
                 profiling(model, use_cuda=False)
 
-    train_loader, val_loader = get_dataset()
-
     if FLAGS.test_only:
         logger.info('Start testing.')
         test(last_epoch, val_loader, model_wrapper, criterion, train_loader)
@@ -209,12 +216,12 @@ def train_val_test():
     logger.info('Start training.')
     for epoch in range(last_epoch + 1, FLAGS.num_epochs):
         # train
-        train(epoch, train_loader, model_wrapper, criterion, optimizer)
+        train(epoch, train_loader, model_wrapper, criterion, optimizer, lr_scheduler)
 
         # val
         validate(epoch, val_loader, model_wrapper, criterion, train_loader)
 
-        lr_scheduler.step()
+        # lr_scheduler.step()
         torch.save(
             {
                 'model': model_wrapper.state_dict(),

@@ -1,8 +1,8 @@
 # data
-dataset: cifar10
+dataset: cifar100
 
 # info
-num_classes: 10
+num_classes: 100
 image_size: 32
 num_epochs: 200
 print_freq: 100
