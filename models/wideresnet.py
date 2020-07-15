@@ -82,7 +82,8 @@ class Model(nn.Module):
         out = self.block2(out)
         out = self.block3(out)
         out = self.relu(self.bn1(out))
-        out = F.avg_pool2d(out, 8)
+        # out = F.avg_pool2d(out, 8)
+        out = F.adaptive_avg_pool2d(out, output_size=(1, 1))
         last_dim = out.size()[1]
         out = out.view(-1, last_dim)
         return self.fc(out)
