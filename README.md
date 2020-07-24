@@ -22,6 +22,7 @@ Modify `width_mult_list` to test more network widths.
 python train.py app:apps/mobilenet_v1.yml
 ```
 # Results and model weights
+For those who do not have access to Google Drive: here is the link to all model weights in [[BaiduYun]](https://pan.baidu.com/s/1q4SLaLZJiw8D2--YJlrAAQ). The extraction code is 4y6m.
 ## Performance over the whole FLOPs specturm
 Comparison with [US-Net](http://openaccess.thecvf.com/content_ICCV_2019/html/Yu_Universally_Slimmable_Networks_and_Improved_Training_Techniques_ICCV_2019_paper.html) under different backbones on ImageNet.
 
