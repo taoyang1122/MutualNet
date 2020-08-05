@@ -27,6 +27,24 @@ Modify `width_mult_list` to test more network widths.
 ```
 python train.py app:apps/mobilenet_v1.yml
 ```
+
+Note that this is to test the performance of all width-resolution configuration. We can obtain the query table by choosing the best-performed configuration at certain contraints (FLOPs). The query tables that we obtained for MobileNet v1 and MobileNet v2 are shown below.
+
+MobileNet v1:
+
+|MFLOPs|569|518|466|418|380|342|309|269|239|215|187|166|146|127|111|76|63|41|30|21|13|
+|------|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|--|--|--|--|--|--|
+|Width-Reso|1.0-224|1.0-0.95|1.0-0.9|1.0-192|0.95-192|0.9-192|0.85-192|0.8-192|0.75-192|0.85-160|0.8-160|0.75-160|0.7-160|0.65-160|0.6-160|0.5-160|0.45-160|0.35-160|0.25-192|0.25-160|0.25-128|
+|Acc|72.4|71.7|71.2|70.9|70.6|70.2|69.7|69.1|68.4|67.7|67.2|66.5|65.6|64.7|63.5|60.3|58.9|54.4|52.7|50.1|45.5|
+
+MobileNet v2:
+
+|MLOPs|300|284|269|254|221|209|198|187|164|154|128|107|89|84|57|
+|-----|---|---|---|---|---|---|---|---|---|---|---|---|--|--|--|
+|Width-Reso|1.0-224|0.95-224|0.9-224|0.85-224|1.0-192|0.95-192|0.9-192|0.85-192|0.8-192|0.75-192|0.7-192|0.75-160|0.7-160|0.85-128|0.7-128|
+|Acc|72.9|72.7|72.4|72.0|71.8|71.6|71.4|71.0|70.4|70.1|69.6|68.3|67.6|65.8|64.2|
+
+For deployment, you only need to keep the model weights and the query table, where the size of the query table is negligible. So the memory footprint (#params) is the same as a single model. If you want a more fine-grained query table, you can test with a smaller width stepsize.
 # Results and model weights
 For those who do not have access to Google Drive: here is the link to all model weights in [[BaiduYun]](https://pan.baidu.com/s/1q4SLaLZJiw8D2--YJlrAAQ). The extraction code is 4y6m.
 ## Performance over the whole FLOPs specturm
