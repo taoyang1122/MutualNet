@@ -28,7 +28,7 @@ Modify `width_mult_list` to test more network widths.
 python train.py app:apps/mobilenet_v1.yml
 ```
 
-Note that this is to test the performance of all width-resolution configuration. We can obtain the query table by choosing the best-performed configuration at certain contraints (FLOPs). The query tables that we obtained for MobileNet v1 and MobileNet v2 are shown below.
+Note that this is to test the performance of all width-resolution configuration. You can obtain the query table by choosing the best-performed configuration at certain contraints (FLOPs). The query tables that we obtained for MobileNet v1 and MobileNet v2 are shown below.
 
 MobileNet v1:
 
