@@ -1,8 +1,11 @@
 # MutualNet: Adaptive ConvNet via Mutual Learning from Network Width and Resolution (ECCV'20 Oral) [[arXiv]](https://arxiv.org/abs/1909.12978)
 This work proposes a method to train a network that is executable at dynamic resource constraints (e.g., FLOPs) during runtime. The proposed mutual learning scheme for input resolution and network width significantly improves the accuracy-efficiency tradeoffs over [Slimmable Networks](https://github.com/JiahuiYu/slimmable_networks) on various tasks such as image classification, object detection and instance segmentation. The method is also promising to serve as a plug-and-play strategy to boost a single network. It substantially outperforms a set of popular data augmentation and regularization methods. The overall framework is shown below. 
-![Framework](imgs/framework.JPG)
+
+<p><img src="imgs/framework.PNG" width="800" /></p>
+
 We feed different sub-networks with different scaled images. This allows each sub-network to learn multi-scale representations from both network scale and input scale as illustrated below.
-![MutualLearning](imgs/mutuallearning.JPG)
+
+<p><img src="imgs/mutuallearning.PNG" width="800" /></p>
 
 # Install
 - PyTorch 1.0.1, torchvision 0.2.2, Numpy, pyyaml 5.1.
