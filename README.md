@@ -81,5 +81,17 @@ Compared with state-of-the-art performance boosting methods on ImageNet
 |[AutoAugment](http://openaccess.thecvf.com/content_CVPR_2019/html/Cubuk_AutoAugment_Learning_Augmentation_Strategies_From_Data_CVPR_2019_paper.html)|15000 GPU search hours|77.6%|
 |[Fast AutoAugment](http://papers.nips.cc/paper/8892-fast-autoaugment)|450 GPU search hours|77.6%|
 |MutualNet ([Model](https://drive.google.com/open?id=1Br3o58lZqyGzZaqZpqhAfUJhMawFS_Pc))| \ |**78.6%**|
+# Citation
+If you find this useful in your work, please consider citing,
+```
+@inproceedings{yang2020mutualnet,
+  title={MutualNet: Adaptive ConvNet via Mutual Learning from Network Width and Resolution},
+  author={Yang, Taojiannan and Zhu, Sijie and Chen, Chen and Yan, Shen and Zhang, Mi and Willis, Andrew},
+  booktitle={European Conference on Computer Vision},
+  pages={299--315},
+  year={2020},
+  organization={Springer}
+}
+```
 # Reference
 \- The code is based on the implementation of [Slimmable Networks](https://github.com/JiahuiYu/slimmable_networks).
