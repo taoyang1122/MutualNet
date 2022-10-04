@@ -1,4 +1,18 @@
-# MutualNet: Adaptive ConvNet via Mutual Learning from Network Width and Resolution (ECCV'20 Oral) [[arXiv]](https://arxiv.org/abs/1909.12978)
+# MutualNet: Adaptive ConvNet via Mutual Learning from Network Width and Resolution (ECCV'20 Oral, TPAMI) [[ECCV]](https://www.ecva.net/papers/eccv_2020/papers_ECCV/papers/123460290.pdf) [[TPAMI]](https://arxiv.org/abs/2105.07085v2)
+
+# Updates
+**MutualNet is extended to 3D (spatiotemporal) networks for video action recognition.** We apply MutualNet to state-of-the-art ConvNet based video models such as SlowFast and X3D. An illustration of the model structure is shown below
+<p><img src="imgs/videostructure.JPG" width="1000" /></p>
+
+We achieve runtime adaptive action recognition while outperforming previous state-of-the-arts. The results based on **Slow-only**, **SlowFast** and **X3D** networks are shown below
+<p><img src="imgs/videoresults1.JPG" width="1000" /></p>
+
+MutualNet achieves substantially better accuracy-efficiency trade-off compared to previous state-of-the-art ConvNet based video models as shown below
+<p><img src="imgs/videoresults2.JPG" width="600" /></p>
+
+For more details and results, please check our TPAMI version [here](https://arxiv.org/abs/2105.07085v2).
+
+# Abstract
 This work proposes a method to train a network that is executable at dynamic resource constraints (e.g., FLOPs) during runtime. The proposed mutual learning scheme for input resolution and network width significantly improves the accuracy-efficiency tradeoffs over [Slimmable Networks](https://github.com/JiahuiYu/slimmable_networks) on various tasks such as image classification, object detection and instance segmentation. The method is also promising to serve as a plug-and-play strategy to boost a single network. It substantially outperforms a set of popular data augmentation and regularization methods. The overall framework is shown below. 
 
 <p><img src="imgs/framework.PNG" width="800" /></p>
